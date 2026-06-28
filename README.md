@@ -1,49 +1,46 @@
 # 🎵 Spotify Music Recommendation System
 
-A **Content-Based Music Recommendation System** built with **Python**, **Scikit-learn**, and **Natural Language Processing (NLP)** that recommends similar Spotify tracks based on textual metadata using **TF-IDF Vectorization** and **Cosine Similarity**.
-
-The project analyzes Spotify music data, visualizes category distributions, and suggests songs that share similar characteristics, making music discovery more personalized and efficient.
+A content-based music recommendation system built using **Python**, **Scikit-learn**, and **Natural Language Processing (NLP)**. The project recommends similar Spotify tracks by analyzing textual metadata with **TF-IDF Vectorization** and **Cosine Similarity**, enabling efficient music discovery based on content rather than user listening history.
 
 ---
 
-# 📌 Overview
+## 📌 Overview
 
-With millions of tracks available on music streaming platforms, discovering songs that match a listener's preferences can be challenging. This project demonstrates how a **content-based recommendation engine** can suggest similar songs by analyzing textual features such as song titles, genres, artists, playlists, or other metadata available in the dataset.
+Music streaming platforms offer millions of tracks, making it difficult for users to discover songs aligned with their interests. This project demonstrates how a **content-based recommendation system** can identify and recommend similar songs by comparing textual features such as titles, artists, genres, or other available metadata.
 
-Instead of relying on user listening history, the system identifies relationships between songs based on their content, making it effective even for new users.
-
----
-
-# 🚀 Features
-
-* 🎵 Content-Based Song Recommendation
-* 🔍 Similar Track Discovery
-* 📊 Interactive Spotify Category Visualization
-* 🧠 TF-IDF Text Vectorization
-* 📐 Cosine Similarity Matching
-* ⚡ Fast Recommendation Retrieval
-* 📈 Exploratory Data Analysis using Plotly
+The recommendation engine converts song information into numerical vectors using **TF-IDF** and measures similarity using **Cosine Similarity** to retrieve the most relevant tracks.
 
 ---
 
-# 📂 Dataset
+## 🚀 Features
+
+* 🎵 Recommend songs similar to a selected track
+* 🧠 Content-based filtering using TF-IDF
+* 📐 Cosine Similarity for recommendation ranking
+* 📊 Interactive visualization of Spotify categories
+* 📈 Exploratory Data Analysis (EDA)
+* ⚡ Fast recommendation retrieval using vector similarity
+
+---
+
+## 📂 Dataset
 
 The project uses a Spotify dataset containing song metadata.
 
-Typical columns include:
+Typical dataset columns include:
 
-| Column           | Description                                        |
-| ---------------- | -------------------------------------------------- |
-| Title            | Song title                                         |
-| Artist           | Artist name                                        |
-| Spotify Category | Playlist, genre, or category                       |
-| Features         | Combined textual metadata used for recommendations |
+| Column           | Description                |
+| ---------------- | -------------------------- |
+| Title            | Song title                 |
+| Spotify Category | Playlist or music category |
+| Artist           | Artist name (if available) |
+| Genre            | Music genre (if available) |
 
-> **Note:** The exact columns may vary depending on the dataset version.
+The recommendation model uses textual information from the dataset to identify similar songs.
 
 ---
 
-# 🛠️ Tech Stack
+## 🛠️ Technologies Used
 
 * Python
 * Pandas
@@ -55,73 +52,71 @@ Typical columns include:
 
 ---
 
-# 🧠 How It Works
+## 🔄 Project Workflow
 
-## 1. Load the Dataset
+### 1. Load the Dataset
 
 The Spotify dataset is imported into a Pandas DataFrame for analysis.
 
 ---
 
-## 2. Explore Music Categories
+### 2. Explore the Dataset
 
-The distribution of Spotify categories is visualized using an interactive Plotly bar chart, providing insights into the diversity of the music catalog.
-
----
-
-## 3. Feature Engineering
-
-Relevant song metadata is combined into a single textual feature. The text is then transformed into numerical vectors using **TF-IDF (Term Frequency–Inverse Document Frequency)**.
-
-TF-IDF highlights distinctive words while reducing the influence of common terms.
+The distribution of Spotify categories is visualized using an interactive Plotly bar chart to better understand the dataset.
 
 ---
 
-## 4. Compute Song Similarity
+### 3. Feature Engineering
 
-The recommendation engine calculates **Cosine Similarity** between TF-IDF vectors to measure how closely songs are related.
+Relevant textual information is combined into a single feature and transformed into numerical vectors using **TF-IDF (Term Frequency–Inverse Document Frequency)**.
 
-Similarity scores range from **0** (completely different) to **1** (highly similar).
+This representation emphasizes important words while reducing the influence of commonly occurring terms.
 
 ---
 
-## 5. Recommend Similar Songs
+### 4. Compute Similarity
+
+Cosine Similarity calculates the similarity between every pair of songs based on their TF-IDF vectors.
+
+Songs with higher similarity scores are considered more relevant to each other.
+
+---
+
+### 5. Generate Recommendations
 
 When a user selects a song:
 
-1. The system locates the selected track.
-2. Computes similarity scores with all other songs.
-3. Sorts songs by similarity.
-4. Returns the top recommended tracks.
+1. The corresponding song is located in the dataset.
+2. Similarity scores are computed.
+3. Songs are ranked by similarity.
+4. The top matching recommendations are returned.
 
 ---
 
-# 📊 Visualizations
+## 📊 Output
 
-The project generates:
+The project provides:
 
-* 📈 Spotify Category Distribution
+* 📈 Spotify Category Distribution Chart
 * 🎵 Top Similar Song Recommendations
 
 ---
 
-# 📁 Project Structure
+## 📁 Project Structure
 
 ```text
 Spotify-Recommendation-System/
 │
-├── data/
-│   └── spotify_dataset.csv
-│
-├── recommendation.py
+├── spotify_dataset.csv
 ├── spotify_recommendation.ipynb
+├── recommendation.py
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-# ⚙️ Installation
+## ⚙️ Installation
 
 Clone the repository:
 
@@ -135,7 +130,7 @@ Navigate to the project directory:
 cd Spotify-Recommendation-System
 ```
 
-Install dependencies:
+Install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -145,7 +140,7 @@ Run the notebook or Python script.
 
 ---
 
-# 📦 Required Libraries
+## 📦 Required Libraries
 
 ```text
 numpy
@@ -154,7 +149,7 @@ scikit-learn
 plotly
 ```
 
-Or install manually:
+Or install them manually:
 
 ```bash
 pip install numpy pandas scikit-learn plotly
@@ -162,10 +157,10 @@ pip install numpy pandas scikit-learn plotly
 
 ---
 
-# 💻 Example Usage
+## 💻 Example Usage
 
 ```python
-recommendations = recommend_music("Blinding Lights")
+recommendations = recommend_song("Shape of You")
 
 print(recommendations)
 ```
@@ -173,67 +168,53 @@ print(recommendations)
 Example Output:
 
 ```text
-Save Your Tears
-Starboy
-Less Than Zero
-After Hours
-Die For You
+Perfect
+Photograph
+Thinking Out Loud
+Castle on the Hill
+Galway Girl
+...
 ```
 
 ---
 
-# 🧩 Recommendation Technique
+## 🧠 Recommendation Technique
 
-This project uses **Content-Based Filtering**, where recommendations are generated based on song metadata rather than user behavior.
+This project uses **Content-Based Filtering**, where recommendations are generated by comparing song metadata rather than user interaction history.
 
-The workflow consists of:
+The recommendation pipeline consists of:
 
-* Feature Extraction using TF-IDF
-* Similarity Computation using Cosine Similarity
-* Ranking Songs by Relevance
-
-This approach performs well even when user interaction history is unavailable.
+* Text preprocessing
+* TF-IDF feature extraction
+* Cosine similarity computation
+* Ranking songs based on similarity scores
 
 ---
 
-# 🎯 Learning Outcomes
+## 📚 Learning Outcomes
 
-This project demonstrates practical experience with:
+Through this project, I explored:
 
-* Recommendation Systems
+* Content-Based Recommendation Systems
 * Natural Language Processing (NLP)
-* Content-Based Filtering
 * TF-IDF Vectorization
 * Cosine Similarity
 * Exploratory Data Analysis (EDA)
-* Interactive Data Visualization
+* Data Visualization using Plotly
 * Python for Machine Learning
 
 ---
 
-# 🔮 Future Improvements
+## 🔮 Future Improvements
 
-* Integrate Spotify Web API for live recommendations
-* Use audio features such as danceability, energy, valence, and tempo
-* Replace TF-IDF with transformer-based embeddings
+* Integrate the Spotify Web API for live song recommendations
+* Incorporate audio features such as tempo, danceability, energy, and valence
+* Improve recommendation quality using transformer-based embeddings
 * Build an interactive web application using Streamlit
-* Add artist- and genre-based filtering
-* Deploy the recommendation engine as a REST API using FastAPI
+* Deploy the recommendation engine as a REST API
 
 ---
 
-# 🤝 Contributing
+## 🎓 About This Project
 
-Contributions are welcome! If you have ideas for improvements or new features, feel free to fork the repository, create a feature branch, and open a Pull Request.
-
----
-
-# 📜 License
-
-This project is licensed under the MIT License.
-
----
-
-# ⭐ Support
-
-If you found this project useful, consider giving it a **⭐ Star**. Your support helps others discover the project and encourages future improvements.
+This project was developed as part of my learning journey to understand recommendation systems and Natural Language Processing (NLP). It demonstrates how textual features can be transformed into meaningful recommendations using TF-IDF Vectorization and Cosine Similarity, along with data visualization techniques for exploratory analysis.
